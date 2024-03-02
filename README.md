@@ -7,4 +7,4 @@ This is my Stats220 Repo for my projects
 1.  These are uni projects
 2.  If you do *choose* to add stuff to it, **Dont mess up the main branch**
 
-3.  [[www.linkedin.com/in/amanullahar28]]
+3.  [Linkedin](www.linkedin.com/in/amanullahar28)
