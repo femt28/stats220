@@ -56,7 +56,7 @@ fifth_vector <- c(fifth_text, fifth_image)%>%
 
 
 frames <- c(top_vector, bottom_vector, third_vector, fourth_vector, fifth_vector)
-gif <- image_animate(frames, fps=1, loop=1) %>%
+gif <- image_animate(frames, fps=1) %>%
   image_write("my_animation.gif")
 
 

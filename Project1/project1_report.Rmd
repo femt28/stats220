@@ -11,13 +11,31 @@ library(magick)
 ```
 
 ```{css}
+body {
+  background-image: linear-gradient(to bottom, #def7ba, #f5ddae);
+  background-size: 100% 200%;
+  transition: background-position 0.5s;
+}
 
+body:hover {
+  background-position: 0 100%;
+}
+
+a {
+  color: red;
+  
+}
+
+a:hover {
+  color: green;
+}
 ```
 
 ## Project requirements
-For this project, I used my existing Github account(please follow I might make something cool hopefully) and I created a stats220 repo as well. The repo includes a readme file with the different headers, two sets of bullet points and also has a link to my linkedin profile(connect with me). Below, I have included a breakdown of my project 1 folder files which includes the rproject file, and the second screenshot shows the images I had in my images folder.  
+For this project, I used my existing Github account(please follow I might make something cool hopefully) and I created a stats220 repo as well. The repo includes a readme file with the two different headers, two sets of bullet points of different types and also has a link to my linkedin profile(connect with me). Below, I have included a breakdown of my project 1 folder files which includes the rproject file, and the second screenshot shows the images I had in my images folder, which were used in the making of the meme and the gif, along with these attached screenshots.
 
 [Github](https://github.com/femt28/stats220)
+
 ![](images\project_files1.png)
 ![](images\project_files2.png)
 
@@ -78,13 +96,16 @@ fifth_vector <- c(fifth_text, fifth_image)%>%
 
 
 frames <- c(top_vector, bottom_vector, third_vector, fourth_vector, fifth_vector)
-gif <- image_animate(frames, fps=1, loop=1) %>%
+gif <- image_animate(frames, fps=1) %>%
   
 
 ```
 ![](my_animation.gif)
+
 ## Creativity
-  
+
+For this project, I extended the meme to my personal context so I could hopefully get extra marks for my work. I also added extra css to the such that the background will transition as the page scrolls, and I also changed the colour of the hyperlink, and changed the hover colour of the hyperlink(can be seen when hovering over the github link I added above). 
 
 ## Learning reflection
 
+One important idea I learnt from this project is the approach to making web content using Rmarkdown and R. On top of those 2, I had to revise my CSS knowledge to change the appearance of the html page. I am definitely more curious as to how to combine R with other languages such as Python to further increase the data manipulation abilities and combine it with other packages such as Pandas and NumPy in Python. Of course, using AI and machine learning to further increase the abilities of this approach will be extremely interesting to learn. And how to webscrape, since if R can be used to create a web document, there should be some way to reverse this process to gather information from existing html pages.
