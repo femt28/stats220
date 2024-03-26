@@ -1,0 +1,118 @@
+---
+title: "Project 2"
+subtitle: "STATS 220 Semester One 2024"
+author: "Amanullah Abdul Rahman"
+output:
+  html_document:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, error=FALSE)
+library(tidyverse)
+```
+
+
+```{css}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Arial', sans-serif; /* Montserrat font for all titles */
+}
+
+p {
+  font-family: 'Roboto', sans-serif; /* Roboto font for all paragraphs */
+}
+
+body {
+  background-image: linear-gradient(to bottom, #def7ba, #f5ddae);
+  background-size: 100% 200%;
+  transition: background-position 0.5s;
+}
+
+body:hover {
+  background-position: 0 100%;
+}
+
+a {
+  color: red;
+  
+}
+
+a:hover {
+  color: green;
+}
+```
+
+## Introduction
+
+For my report, I decided to study social media usage, specifically why and when people use social media. One of the guidelines I followed in designing my form was the University Of Auckland data minimisation principle. This principle means only data to be used in the analysis should be collected. This can be seen in the form where I only collected the data I needed and nothing else, especially personal and private information(such as emails, names, etc.) was collected.
+
+Two things I collected in my data was the browsing frequency and the activity during social media usage. Over time, browsing frequency can change as people want to either limit or increase their social media usage. There should also be less or more activities during which social media is used depending on the individuals' goals. I also collected information on what their goals were through the question on whether individuals want to change their time spent on social media(last question in form). This should also show a change over time as people accomplish their goals(moving towards maintain as a response), which should help to analyse changes in this human behaviour over different weeks. Additionally, changes in the number of social media accounts could help in seeing if there are any changes in social media usage.
+
+[The link to my google form](https://forms.gle/6VsNmcp3AGmuTC5L8)
+
+
+## Analytics
+```{r data-set, eval=TRUE}
+learning_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRtGcdZAI-wbZNfW4E2gr-iSrjg9txmnXfJn5snsp3PEAR_FZoT4QFOYBrtjeTsolc6BngFnzIYfHM_/pub?output=csv") %>%
+  rename(
+    number_of_accounts = 2,
+    main_purposes = 3,
+    avg_hours_spent = 4,
+    browsing_frequency = 5,
+    activity_during_usage = 6,
+    time_spent_change = 7
+  ) 
+
+```
+
+```{r tidy-data, eval=TRUE}
+
+learning_data_longer <- learning_data %>%
+  separate_rows(main_purposes, sep = ", ")%>%
+  separate_rows(activity_during_usage, sep = ", ")
+
+```
+
+Majority of the responses want to either decrease or maintain current social media usage.  
+Most of the people who responded use social media every 30 minutes.  
+Most people use social media to keep up with friends and to socialise.  
+
+
+```{r plot1, eval=TRUE}
+plot1 <- ggplot(data = learning_data_longer) +
+  geom_bar(aes(x=browsing_frequency, fill=time_spent_change)) +
+  labs(title="More browsing, wanting to change?",
+       subtitle="Comparing the browsing frequency to what changes is desired",
+       x="Browsing frequency",
+       y="Number of responses")
+
+plot1
+```
+
+```{r plot2, eval=TRUE}
+plot2 <- ggplot(data= learning_data_longer) +
+  geom_bar(aes(y=avg_hours_spent, fill= time_spent_change)) +
+  labs(title="Hours spent vs change",
+       subtitle="Comparing the hours spent on social media to what changes is desired",
+       x="Number of responses",
+       y="Average hours spent a day")
+
+plot2
+```
+
+```{r dynamic-statements, eval=TRUE}
+
+paste("The largest number of accounts an individual had was", max(learning_data_longer$number_of_accounts))
+paste("The mean hours spent on social media was", mean(learning_data_longer$avg_hours_spent))
+
+```
+
+
+## Creativity
+
+Two of the creative things I did in this report was the design of the Google form and the overall look of the final html document produced. I changed the theme of the Google form to match the header picture I used to make it seem less jarring when viewing the form. I also changed a lot of how the final html result is through the use of CSS, mainly changing the background colour and making it a gradient, the link to the Google form is different as well. I also changed the font used in the document.
+
+## Learning reflection
+
+This module has taught me how to generate graphs through the use of csv files. This was interesting as I can collect different types of csv data and analyse it on my own. For example, I collect my stock investing data in a csv and have to use Google sheets to analyse it, but now I can use R to analyse it, and have it update in real time through publishing the sheet. I would like to learn how to create other charts as well mainly line and pie charts, as that is more useful for my personal use case.
+
