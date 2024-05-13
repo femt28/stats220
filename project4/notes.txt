@@ -1,0 +1,5 @@
+https://docs.google.com/spreadsheets/d/e/2PACX-1vRI8VDHH7vvWXwknbQ_ZfVRhjOb8SYTIleo0EaOqdiL6XZaDGmNN80V1_Ibbp6pPhnaNU-5fTxROeV7/pub?output=csv
+
+create new column for short and non short(less than 1min?), create graph based on that.
+	weismann has more shorts than donut
+
